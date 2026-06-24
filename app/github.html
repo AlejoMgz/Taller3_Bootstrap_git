@@ -1,59 +1,281 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Github</title>
+    <title>Guía GitHub ADSO - AppCore</title>
     <link class="shortcut icon" href="../assets/img/yo.jpg" type="image/x-icon">
-
     <meta name="author" content="Alejandro Mesa">
-    <meta name="description" content="taller 3 de bootstrap">
-    <meta name="keywords" content="TALLER, taller, Taller">
-
-    <meta name="theme-color" content="#1328EB">
-    <meta name="MobileOptimized" content="width">
-    <meta name="HandheldFriendly" content="true">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-</head>
-<body class="bg-light">
     
-    <header>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <div class="container-fluid">
-                <div class="navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav d-flex align-items-center gap-3">
-                        <!--logo -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
+    <style>
+        body { padding-top: 70px; }
+        .sticky-top-custom { top: 90px; }
+        /* Consola estilo Drácula/Premium */
+        .terminal-window { background-color: #181824; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        .terminal-header { background-color: #212130; padding: 8px 15px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid #2d2d3f; }
+        .terminal-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+        .dot-red { background-color: #ff5f56; }
+        .dot-yellow { background-color: #ffbd2e; }
+        .dot-green { background-color: #27c93f; }
+        .terminal-body { padding: 15px; margin-bottom: 0; }
+        .terminal-body code { color: #f8f8f2; font-family: 'SFMono-Regular', Consolas, monospace; font-size: 0.9rem; }
+        .command-token { color: #ff79c6; }
+        .param-token { color: #50fa7b; }
+        .string-token { color: #f1fa8c; }
+    </style>
+</head>
+<body class="bg-body-secondary text-dark d-flex flex-column min-vh-100">
+    
+ <header class="shadow-sm fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2" aria-label="Main navigation">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                    <img src="../assets/img/yo.jpg" alt="Alejandro Mesa Avatar" style="width:40px; height: 40px;" class="rounded-circle border border-2 border-secondary">
+                    <span class="fs-5 fw-bold text-white tracking-wide">Taller 3</span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    
+                    <ul class="navbar-nav gap-1 gap-lg-2">
                         <li class="nav-item">
-                            <img src="../assets/img/yo.jpg" alt="Avatar Logo" style="width:57px;height: 60px;" class="rounded-pill m-0"> 
+                            <a class="nav-link active fw-medium" href="../index.html">
+                                <i class="bi bi-house-door me-1" aria-hidden="true"></i>Inicio
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="../index.html"><i class="bi bi-house me-1"></i>Inicio</a>
-                        </li>
-                        <li class="nav-item" >
-                            <a href="forms.html" class="nav-link text-bg-dark" ><i class="bi bi-house me-1"></i>Forms</a>
+                            <a class="nav-link fw-medium" href="../app/table.html">
+                                <i class="bi bi-table me-1" aria-hidden="true"></i>Tables
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="table.html">Tables</a>
+                            <a class="nav-link fw-medium" href="../app/github.html">
+                                <i class="bi bi-github me-1" aria-hidden="true"></i>Git
+                            </a>
                         </li>
                     </ul>
+
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-2 gap-lg-3 mt-3 mt-lg-0">
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white-50 fw-medium" href="#" id="dropdownModules" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-box-seam me-1"></i>Módulos ADSO
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark shadow border-secondary dropdown-menu-end" aria-labelledby="dropdownModules">
+                                <li><a class="dropdown-menu-item dropdown-item small py-2" href="#"><i class="bi bi-code-slash me-2 text-warning"></i>Frontend</a></li>
+                                <li><a class="dropdown-menu-item dropdown-item small py-2" href="#"><i class="bi bi-database me-2 text-success"></i>Bases de Datos</a></li>
+                                <li><hr class="dropdown-divider border-secondary"></li>
+                                <li><a class="dropdown-menu-item dropdown-item small py-2" href="#"><i class="bi bi-terminal me-2 text-danger"></i>Backend </a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white-50 fw-medium" href="#" id="dropdownInfo" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-info-circle me-1"></i>Información
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark shadow border-secondary dropdown-menu-end" aria-labelledby="dropdownInfo">
+                                <li><a class="dropdown-menu-item dropdown-item small py-2" href="#"><i class="bi bi-journal-text me-2"></i>Documentación</a></li>
+                                <li><a class="dropdown-menu-item dropdown-item small py-2" href="#"><i class="bi bi-people me-2"></i>Soporte Técnico</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="vr d-none d-lg-block bg-secondary opacity-50" style="height: 20px;"></div>
+
+                        <li class="nav-item">
+                            <a class="btn btn-info btn-sm fw-bold px-3 py-2 rounded-pill d-inline-flex align-items-center shadow-sm" href="../app/forms.html">
+                                <i class="bi bi-box-arrow-in-right me-1 fs-6"></i>Acceder
+                            </a>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </nav>
-    </header> 
-<footer class="bg-dark text-light py-4 mt-5">
-        <div class="container text-center">
-            <div class="mb-3">
-                <a href="#" class="text-light text-decoration-none mx-3 fs-4 transition-icon"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="text-light text-decoration-none mx-3 fs-4 transition-icon"><i class="bi bi-whatsapp"></i></a>
-                <a href="#" class="text-light text-decoration-none mx-3 fs-4 transition-icon"><i class="bi bi-github"></i></a>
+    </header>
+
+    <main class="container my-5">
+       
+
+        <div class="row g-4">
+            <div class="col-12 col-lg-3">
+                <div class="card shadow-sm border-0 sticky-top sticky-top-custom bg-white p-3">
+                    <h5 class="fw-bold text-dark mb-3 pb-2 border-bottom text-uppercase fs-7 text-secondary">Pasos:</h5>
+                    <nav class="nav flex-column gap-2 small">
+                        <a class="nav-link p-2 bg-light rounded text-dark fw-medium" href="#fase1"><i class="bi bi-folder-symlink me-2 text-primary"></i>1. Estructura Local</a>
+                        <a class="nav-link p-2 bg-light rounded text-dark fw-medium" href="#fase2"><i class="bi bi-gear-fill me-2 text-warning"></i>2. Configuración Inicial</a>
+                        <a class="nav-link p-2 bg-light rounded text-dark fw-medium" href="#fase3"><i class="bi bi-play-circle-fill me-2 text-success"></i>3. Ciclo de Vida Git</a>
+                        <a class="nav-link p-2 bg-light rounded text-dark fw-medium" href="#fase4"><i class="bi bi-cloud-arrow-up-fill me-2 text-info"></i>4. Vinculación Remota</a>
+                        <a class="nav-link p-2 bg-light rounded text-dark fw-medium" href="#fase5"><i class="bi bi-git me-2 text-danger"></i>5. Flujo de Ramas (GitFlow)</a>
+                    </nav>
+                </div>
             </div>
-            <p class="mb-0 text-secondary">Alejandro Mesa. Todos los derechos reservados © 2026.</p>
+
+            <div class="col-12 col-lg-9">
+                
+                <section id="fase1" class="mb-5">
+                    <div class="card shadow-sm border-0 bg-white">
+                        <div class="card-header bg-dark text-white py-3 border-0">
+                            <h4 class="mb-0 fs-5 fw-bold"><i class="bi bi-folder-symlink me-2 text-primary"></i>1. Estructura de Directorios del Proyecto</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-secondary">Antes de inicializar Git, es un requisito estricto ordenar el espacio de trabajo siguiendo el patrón estándar del programa de formación:</p>
+                            <div class="terminal-window mt-3">
+                                <div class="terminal-header">
+                                    <span class="terminal-dot dot-red"></span>
+                                    <span class="terminal-dot dot-yellow"></span>
+                                    <span class="terminal-dot dot-green"></span>
+                                    <span class="text-white-50 small ms-2 font-monospace">Estructura del Proyecto</span>
+                                </div>
+                                <pre class="terminal-body"><code><span class="text-warning fw-bold">taller3/</span>
+├── <span class="text-info fw-bold">app/</span>
+│   ├── <i class="bi bi-filetype-html text-danger"></i> forms.html
+│   ├── <i class="bi bi-filetype-html text-danger"></i> table.html
+│   └── <i class="bi bi-filetype-html text-danger"></i> github.html
+├── <span class="text-info fw-bold">assets/</span>
+│   ├── <span class="text-muted">css/</span> <span class="text-white-50">// Hojas de estilo locales</span>
+│   ├── <span class="text-muted">img/</span> <span class="text-white-50">// Recursos gráficos e imágenes</span>
+│   └── <span class="text-muted">js/</span>  <span class="text-white-50">// Scripts funcionales</span>
+├── <i class="bi bi-filetype-html text-danger"></i> index.html
+└── <i class="bi bi-file-earmark-text text-info"></i> README.md</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="fase2" class="mb-5">
+                    <div class="card shadow-sm border-0 bg-white">
+                        <div class="card-header bg-dark text-white py-3 border-0">
+                            <h4 class="mb-0 fs-5 fw-bold"><i class="bi bi-gear-fill me-2 text-warning"></i>2. Configuración de Identidad Global</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-secondary">Abre tu terminal integrada (<kbd class="bg-secondary text-white">Ctrl + Shift + `</kbd>) y declara tus credenciales institucionales. Esto evita que tus firmas de autor aparezcan anónimas en GitHub.</p>
+                            
+                            <div class="terminal-window mt-3">
+                                <div class="terminal-header">
+                                    <span class="terminal-dot dot-red"></span>
+                                    <span class="terminal-dot dot-yellow"></span>
+                                    <span class="terminal-dot dot-green"></span>
+                                    <span class="text-white-50 small ms-2 font-monospace">bash - Terminal</span>
+                                </div>
+                                <pre class="terminal-body"><code><span class="command-token">git config</span> --global user.name <span class="string-token">"Alejandro Mesa"</span>
+<span class="command-token">git config</span> --global user.email <span class="string-token">"tu_correo@example.com"</span>
+
+<span class="text-white-50">// Comando de verificación:</span>
+<span class="command-token">git config</span> --global --list</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="fase3" class="mb-5">
+                    <div class="card shadow-sm border-0 bg-white">
+                        <div class="card-header bg-dark text-white py-3 border-0">
+                            <h4 class="mb-0 fs-5 fw-bold"><i class="bi bi-play-circle-fill me-2 text-success"></i>3. Ciclo Local (Init, Track & Commit)</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-secondary">Convierte el directorio de tu máquina en un repositorio rastreado por Git y efectúa la primera confirmación de cambios en tu historial local:</p>
+                            
+                            <div class="timeline gap-3 d-flex flex-column mt-3">
+                                <div class="p-3 bg-light rounded-3 border-start border-success border-3">
+                                    <h6 class="fw-bold text-dark"><i class="bi bi-1-circle-fill text-success me-2"></i>Inicializar el repositorio</h6>
+                                    <p class="small text-secondary mb-2">Crea la base de datos interna oculta llamada <code>.git</code>.</p>
+                                    <div class="terminal-window"><pre class="terminal-body"><code><span class="command-token">git init</span></code></pre></div>
+                                </div>
+
+                                <div class="p-3 bg-light rounded-3 border-start border-success border-3">
+                                    <h6 class="fw-bold text-dark"><i class="bi bi-2-circle-fill text-success me-2"></i>Indexar los archivos (Staging Area)</h6>
+                                    <p class="small text-secondary mb-2">Prepara los archivos agregándolos al área de preparación de confirmaciones.</p>
+                                    <div class="terminal-window"><pre class="terminal-body"><code><span class="command-token">git add</span> .</code></pre></div>
+                                </div>
+
+                                <div class="p-3 bg-light rounded-3 border-start border-success border-3">
+                                    <h6 class="fw-bold text-dark"><i class="bi bi-3-circle-fill text-success me-2"></i>Crear la Confirmación de Estado (Commit)</h6>
+                                    <p class="small text-secondary mb-2">Guarda una instantánea inmutable en el historial con un mensaje descriptivo.</p>
+                                    <div class="terminal-window"><pre class="terminal-body"><code><span class="command-token">git commit</span> -m <span class="string-token">"feat: estructura inicial del taller 3 con bootstrap"</span></code></pre></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="fase4" class="mb-5">
+                    <div class="card shadow-sm border-0 bg-white">
+                        <div class="card-header bg-dark text-white py-3 border-0">
+                            <h4 class="mb-0 fs-5 fw-bold"><i class="bi bi-cloud-arrow-up-fill me-2 text-info"></i>4. Conexión y Subida a GitHub Remoto</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-secondary">Crea un repositorio vacío en tu perfil web de GitHub, luego vincula tu terminal local y sube los cambios directamente a la rama principal:</p>
+                            
+                            <div class="terminal-window mt-3">
+                                <div class="terminal-header">
+                                    <span class="terminal-dot dot-red"></span>
+                                    <span class="terminal-dot dot-yellow"></span>
+                                    <span class="terminal-dot dot-green"></span>
+                                    <span class="text-white-50 small ms-2 font-monospace">bash - Cloud Push</span>
+                                </div>
+                                <pre class="terminal-body"><code><span class="text-white-50">// 1. Asegurar el nombre estándar de la rama principal (main)</span>
+<span class="command-token">git branch</span> -M main
+
+<span class="text-white-50">// 2. Enlazar el repositorio local con el de GitHub</span>
+<span class="command-token">git remote add</span> origin https://github.com/tu-usuario/nombre-repositorio.git
+
+<span class="text-white-50">// 3. Subir el código por primera vez emparejando la rama</span>
+<span class="command-token">git push</span> -u origin main</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="fase5" class="mb-5">
+                    <div class="card shadow-sm border-0 bg-white">
+                        <div class="card-header bg-dark text-white py-3 border-0">
+                            <h4 class="mb-0 fs-5 fw-bold"><i class="bi bi-git me-2 text-danger"></i>5. Flujo de Trabajo Técnico (Ramas / Branches)</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-secondary">En el desarrollo profesional nunca se trabaja directo sobre <code>main</code>. Las nuevas vistas o correcciones de layouts se despliegan en ramas independientes.</p>
+                            
+                            <div class="alert alert-warning border-0 shadow-sm d-flex gap-3 align-items-center mb-4">
+                                <i class="bi bi-exclamation-triangle-fill fs-4 text-warning"></i>
+                                <div class="small"><strong>Buena práctica:</strong> Crea una rama secundaria separada (por ejemplo, para el formulario o para la tabla de datos) para no estropear la versión estable del proyecto.</div>
+                            </div>
+
+                            <div class="terminal-window">
+                                <div class="terminal-header">
+                                    <span class="terminal-dot dot-red"></span>
+                                    <span class="terminal-dot dot-yellow"></span>
+                                    <span class="terminal-dot dot-green"></span>
+                                    <span class="text-white-50 small ms-2 font-monospace">bash - Ramificaciones</span>
+                                </div>
+                                <pre class="terminal-body"><code><span class="text-white-50">// Crear una nueva rama dedicada al desarrollo del Formulario</span>
+<span class="command-token">git checkout</span> -b feature-formulario
+
+<span class="text-white-50">// Realizas tus modificaciones de código en forms.html, guardas y confirmas:</span>
+<span class="command-token">git add</span> .
+<span class="command-token">git commit</span> -m <span class="string-token">"style: diseño del formulario optimizado con grids de bootstrap"</span>
+
+<span class="text-white-50">// Sincronizar la rama hija de forma independiente con GitHub</span>
+<span class="command-token">git push</span> origin feature-formulario</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-auto border-top border-secondary">
+        <div class="container text-center">
+            <p class="mb-0 text-white-50 small">Alejandro Mesa. Control de Versiones y Estructuración de Software © 2026.</p>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
